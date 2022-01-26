@@ -24,11 +24,11 @@ public class Categoria {
 	
 	@NotNull
 	@NotBlank
-	private String Classificacao;
+	private String classificacao;
 	
 	@NotNull
 	@NotBlank
-	private String Fabricante;
+	private String fornecedor;
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
@@ -43,19 +43,20 @@ public class Categoria {
 	}
 
 	public String getClassificacao() {
-		return Classificacao;
+		return classificacao;
 	}
 
 	public void setClassificacao(String classificacao) {
-		Classificacao = classificacao;
+		this.classificacao = classificacao;
 	}
 
-	public String getFabricante() {
-		return Fabricante;
+	public String getFornecedor() {
+		return fornecedor;
 	}
 
-	public void setFabricante(String fabricante) {
-		Fabricante = fabricante;
+	public void setFornecedor(String fornecedor) {
+		this.fornecedor = fornecedor;
 	}
+
 	
 }

@@ -21,9 +21,12 @@ import com.br.generation.BackEnd.Farmacia.Repository.CategoriaRepository;
 @RestController
 @RequestMapping("/categoria")
 @CrossOrigin("*")
+
 public class CategoriaController {
+	
 	@Autowired
 	private CategoriaRepository repository;
+
 	@GetMapping
 	public ResponseEntity<List<Categoria>> findAllCategoria() {
 		return ResponseEntity.ok(repository.findAll());
@@ -36,8 +39,8 @@ public class CategoriaController {
 	}
 
 	@GetMapping("/fabricante/{fabricante}")
-	public ResponseEntity<Categoria> findByFabricanteCategoria(@PathVariable String fabricante) {
-		return ResponseEntity.ok(repository.findByFabricanteContainingIgnoreCase(fabricante));
+	public ResponseEntity<Categoria> findByFabricanteCategoria(@PathVariable String Fornecedor) {
+		return ResponseEntity.ok(repository.findByFornecedorContainingIgnoreCase(Fornecedor));
 	}
 
 	@PostMapping
@@ -56,5 +59,4 @@ public class CategoriaController {
 	public void deleteCategoria(@PathVariable long id) {
 		repository.deleteById(id);
 	}
-
 }

@@ -23,9 +23,6 @@ import com.br.generation.BackEnd.Farmacia.Repository.ProdutoRepository;
 @CrossOrigin ("*")
 
 public class ProdutoController {
-	public class Produto {
-
-	}
 
 	@Autowired
 	private ProdutoRepository repository;
@@ -53,14 +50,15 @@ public class ProdutoController {
 			return ResponseEntity.notFound().build();
 	}
 		@PostMapping
-		public ResponseEntity<Produto> postProduto(@RequestBody Produto produto){
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(repository.save(produto));
-	}
-		@PutMapping 
-		public ResponseEntity<Produto> putProduto(@RequestBody Produto product){
-			return ResponseEntity.ok(repository.save(product));
-	}
+		public ResponseEntity<Produto> post (@RequestBody Produto produtos) {
+			return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produtos));
+		}
+		
+		@PutMapping
+		public ResponseEntity<Produto> put (@RequestBody Produto produtos) {
+			return ResponseEntity.status(HttpStatus.OK).body(repository.save(produtos));
+		}
+		
 		@DeleteMapping("{id}")
 		public void deleteCategoria(@PathVariable long id) {
 			repository.deleteById(id);
